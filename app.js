@@ -3,8 +3,8 @@
 const express = require("express")
 const morgan = require("morgan")
 const port = process.env.PORT || 5005;
-const projectsData = require("./data/projects.json")
-const articlesData = require("./data/articles.json")
+const projects = require("./data/projects.json")
+const articles = require("./data/articles.json")
 
 
 // CREATE EXPRESS APP
@@ -31,12 +31,11 @@ app.get("/blog", (req, res)=>{
     res.sendFile(__dirname + "/views/blog.html")
 })
 app.get("/api/projects", (req, res)=>{
-    res.json({projectsData})
+    res.json(projects)
 })
 app.get("/api/articles", (req, res)=>{
-    res.json({articlesData})
+    res.json(articles)
 })
-
 app.get("*", (req, res)=>{
     res.status(404).sendFile(__dirname + "/views/not-found.html")
 })

@@ -25,6 +25,9 @@ app.use(morgan("dev"));
 app.get("/", (req, res)=>{
     res.status(200).sendFile(__dirname + "/views/home.html")
 })
+app.get("/blog", (req, res)=>{
+    res.status(200).sendFile(__dirname + "/views/blog.html")
+})
 
 
 // START THE SERVER

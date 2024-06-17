@@ -3,6 +3,8 @@
 const express = require("express")
 const morgan = require("morgan")
 const port = process.env.PORT || 5005;
+const projectsData = require("./data/projects.json")
+const articlesData = require("./data/articles.json")
 
 
 // CREATE EXPRESS APP
@@ -23,10 +25,16 @@ app.use(morgan("dev"));
 // ROUTES
 // Start defining your routes here:
 app.get("/", (req, res)=>{
-    res.status(200).sendFile(__dirname + "/views/home.html")
+    res.sendFile(__dirname + "/views/home.html")
 })
 app.get("/blog", (req, res)=>{
-    res.status(200).sendFile(__dirname + "/views/blog.html")
+    res.sendFile(__dirname + "/views/blog.html")
+})
+app.get("/api/projects", (req, res)=>{
+    res.json({projectsData})
+})
+app.get("/api/articles", (req, res)=>{
+    res.json({articlesData})
 })
 
 
